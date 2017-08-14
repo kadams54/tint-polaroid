@@ -1,5 +1,5 @@
 require('es6-promise').polyfill();
-require('isomorphic-fetch');
+const fetch = require('isomorphic-fetch');
 
 const API_TOKEN = '4322315ecd049d0d0d0fa43e0ea7c5c8efe1ff8f';
 const BASE_URL = 'https://api.tintup.com/v1';
@@ -15,7 +15,7 @@ function fetchFeed(name, params) {
   const querystring = Object.keys(params)
     .map(key => `${key}=${params[key]}`)
     .join('&');
-  url = `${BASE_URL}/feed/${name}?${querystring}`;
+  const url = `${BASE_URL}/feed/${name}?${querystring}`;
   return fetch(url).then(response => {
     return response.json();
   });
