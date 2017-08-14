@@ -1,5 +1,24 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  .polaroids(data-infinite-scroll='{ "path": ".next", "append": ".polaroid", "history": false, "scrollThreshold": 50 }')
+    each polaroid, index in polaroids
+      .polaroid
+        div(class=['frame', polaroid.type])
+          .content
+            if polaroid.type === 'image'
+              .image-container(
+                style=`background-image: url('${polaroid.image}')`
+                title=polaroid.title
+              )
+            else
+              .quote-container
+                q.quote= polaroid.title
+          .label
+            .author= polaroid.author
+  if next
+    a.next(href=next) Next
+
+block scripting
+  script.
+    window.setInterval(() => window.scrollBy(0,1), 50);

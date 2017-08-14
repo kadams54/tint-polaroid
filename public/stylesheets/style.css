@@ -1,8 +1,169 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+:root {
+  --padding: 2vw;
+  --black: rgb(30, 30, 30);
+  --white: rgb(250, 250, 240);
 }
 
-a {
-  color: #00B7FF;
+html {
+  box-sizing: border-box;
+}
+
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+  margin: 0;
+  padding: var(--padding);
+  background-color: var(--black)
+}
+
+q {
+  quotes: "“" "”" "‘" "’";
+}
+
+q:before {
+    content: open-quote;
+}
+
+q:after {
+    content: close-quote;
+}
+
+.polaroids {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: var(--padding);
+}
+
+.polaroid {
+  background-color: var(--white);
+  transform: rotate(-1deg);
+  height: 25vw;
+}
+
+.polaroid:nth-child(even) {
+  transform: rotate(1deg);
+}
+
+.polaroid:nth-child(3n) {
+  transform: none;
+  position: relative;
+  top: -1px;
+}
+
+.polaroid:nth-child(5n) {
+  transform: rotate(2deg);
+  position: relative;
+  top: 1px;
+}
+
+.polaroid:nth-child(8n) {
+  position: relative;
+  top: 3px;
+  right: 1px;
+}
+
+.polaroid:nth-child(11n) {
+  position: relative;
+  top: 3px;
+  left: -1px;
+}
+
+.frame {
+  height: 100%;
+  padding: var(--padding);
+  display: flex;
+  flex-direction: column;
+}
+
+.content {
+  flex: 1;
+  animation-name: fadein;
+  animation-duration: 10s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+  opacity: 0;
+}
+
+.polaroid:nth-child(even) .content {
+  animation-delay: 2s;
+}
+
+.polaroid:nth-child(3n) .content {
+  animation-duration: 8s;
+}
+
+.polaroid:nth-child(5n) .content {
+  animation-delay: 5s;
+  animation-duration: 8s;
+}
+
+.polaroid:nth-child(8n) .content {
+  animation-delay: 8s;
+}
+
+.polaroid:nth-child(11n) .content {
+  animation-delay: 1s;
+  animation-duration: 12s;
+}
+
+@keyframes fadein {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.image-container {
+  background-size: cover;
+  background-color: var(--white);
+  background-repeat: no-repeat;
+  background-position: center, center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.label {
+  margin-top: var(--padding);
+}
+
+.quote-container {
+  background-color: var(--black);
+  color: var(--white);
+  height: 100%;
+  display: table;
+  padding: var(--padding);
+}
+
+.quote-container .quote {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  line-height: 1.4;
+  opacity: 0.9;
+  font-size: 1.5vw;
+}
+
+.author {
+  font-family: 'Permanent Marker', cursive;
+  font-weight: 400;
+  text-align: center;
+  opacity: 0.7;
+}
+
+.next {
+  display: none;
+}
+
+.overlay {
+  background-color: var(--white);
+  opacity: 0;
+  position: absolute;
+  z-index: 1;
+}
+
+.top .overlay {
+  opacity: 0;
+  transition: opacity 1s;
 }
