@@ -1,21 +1,7 @@
-require('es6-promise').polyfill();
-require('isomorphic-fetch');
 const express = require('express');
+const services = require('./services');
 
-const API_TOKEN = '4322315ecd049d0d0d0fa43e0ea7c5c8efe1ff8f';
 const TINT_NAME = 'nationalparkservice';
-const BASE_URL = 'https://api.tintup.com/v1';
-
-const fetchFeed = function(params) {
-  params['api_token'] = API_TOKEN;
-  const querystring = Object.keys(params)
-    .map(key => `${key}=${params[key]}`)
-    .join('&');
-  url = `${BASE_URL}/feed/${TINT_NAME}?${querystring}`;
-  return fetch(url).then(response => {
-    return response.json();
-  });
-};
 
 const router = express.Router();
 
@@ -28,7 +14,7 @@ router.get(['/', '/:refTimestamp/:pageId'], function(req, res) {
   if (req.params.refTimestamp) {
     tintParams['ref_timestamp'] = req.params.refTimestamp;
   }
-  fetchFeed(tintParams).then(feed => {
+  services.fetchFeed(TINT_NAME, tintParams).then(feed => {
     // Generate the URL for requesting the next page of items.
     let next = null;
     if (feed.has_next_page) {
