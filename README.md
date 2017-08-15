@@ -13,12 +13,12 @@ with `#101parks` or `#findyourpark` to pull in user-generated content.
 For me, [polaroids](https://en.wikipedia.org/wiki/Instant_film) were the
 original instant-gratification photos, long before social media came along.
 Anyone who grew up in the 80s remembers shaking a photo, waiting for it to
-slowly appear before your eyes. This theme harkens back to the original,
-presenting the images in an organized (but not too precise) manner. I can
-picture this theme scrolling through the day's photos on a TV display at a
+slowly appear before your eyes. This theme goes retro, styling the images as
+polaroid photos and presenting them in an organized (but not too precise)
+manner. This theme is perfect for showing the day's photos on a TV display at a
 park's visitor center.
 
-While I've focused on American's parks for the demo, the theme is more generally
+While I've focused on America's parks for the demo, the theme is more generally
 useful for a variety of tourist destinations.
 
 ## Challenges Encountered
