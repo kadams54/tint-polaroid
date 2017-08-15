@@ -44,15 +44,19 @@ Places to improve:
 further enhance the polaroid look-and-feel.
 * Get test coverage and a real build process (Gulp, Webpack, PostCSS) in place.
 * Improve browser support.
+* Figure out how to prevent grid resizes when a user name is too wide.
+* Test across a variety of screen sizes and resolutions; setup CSS breakpoints
+accordingly.
+* It would be good to update the refTimestamp so that we're occasionally fast
+forwarding to the current moment and not perpetually moving backwards in time.
 
 # Getting Started
 
 To run Polaroid locally:
 
-1. Modify `services.js` to use your TINT API token.
-2. `npm install`
-3. `npm run`
-4. Point Chrome at http://localhost:3000/YOUR_API_TOKEN; optionally, you can
+1. `npm install`
+2. `npm run`
+3. Point Chrome at http://localhost:3000/YOUR_API_TOKEN; optionally, you can
 also point it to http://localhost:3000/YOUR_API_TOKEN/YOUR_TINT_NAME if you want
 to use a feed other than the NPS one I created.
 
